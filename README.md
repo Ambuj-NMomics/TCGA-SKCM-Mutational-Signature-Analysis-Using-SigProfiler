@@ -1,5 +1,5 @@
 # TCGA-SKCM Mutational Signature Analysis
-## So here's what this project is about, I took real melanoma genomic data from TCGA and ran it through a complete mutational signature analysis pipeline. The goal was simple: figure out what biological processes are actually responsible for the mutations piling up in melanoma genomes.
+### So here's what this project is about, I took real melanoma genomic data from TCGA and ran it through a complete mutational signature analysis pipeline. The goal was simple: figure out what biological processes are actually responsible for the mutations piling up in melanoma genomes.
 The analysis includes:
 1. Downloading somatic mutation data from TCGA/GDC
 2. Processing MAF mutation files
