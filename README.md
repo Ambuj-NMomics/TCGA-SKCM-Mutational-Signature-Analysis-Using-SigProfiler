@@ -35,9 +35,13 @@ The goal of this project was to computationally identify these mutational proces
 ## What Even Are Mutational Signatures?
 
 So here's the thing — DNA doesn't just randomly break. Different things damage it in very specific ways, and those ways leave patterns. Consistent, reproducible patterns.
+
 UV radiation? It causes C→T mutations, almost always at dipyrimidine sites. Tobacco smoke leaves C→A transversions. And APOBEC enzymes — which are actually part of your own immune system, which I find kind of wild — mutate cytosines in very particular sequence contexts. Your body's defense mechanism quietly leaving marks on your genome. Weird, right?
+
 Now here's where it gets interesting. These patterns are consistent enough across thousands of tumors that researchers started cataloguing them. That catalogue is called COSMIC signatures — and there are now 79+ of them. Each one is basically a fingerprint. A biological fingerprint of whatever process caused the damage.
+
 The way we actually capture this is through the SBS96 framework. Every single mutation gets categorized by its trinucleotide context — meaning, what base mutated, what it changed to, and what bases were sitting on either side of it. Do the math: 6 substitution types × 16 possible flanking combinations = 96 categories total. It sounds complicated but once you see it visually it clicks immediately. Honestly it's kind of elegant for something built to track cancer mutations.
+
 So a mutational signature is essentially just a pattern across those 96 categories. And when you see the same pattern showing up repeatedly across different patients? That's a biological process leaving its mark — consistently enough that you can name it, study it, and eventually maybe target it.
 
 ## SBS96 Framework:
