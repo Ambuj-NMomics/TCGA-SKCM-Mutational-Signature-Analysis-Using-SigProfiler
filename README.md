@@ -1,5 +1,5 @@
-### TCGA-SKCM Mutational Signature Analysis
-##So here's what this project is about, I took real melanoma genomic data from TCGA and ran it through a complete mutational signature analysis pipeline. The goal was simple: figure out what biological processes are actually responsible for the mutations piling up in melanoma genomes.
+# TCGA-SKCM Mutational Signature Analysis
+## So here's what this project is about, I took real melanoma genomic data from TCGA and ran it through a complete mutational signature analysis pipeline. The goal was simple: figure out what biological processes are actually responsible for the mutations piling up in melanoma genomes.
 The analysis includes:
 1. Downloading somatic mutation data from TCGA/GDC
 2. Processing MAF mutation files
@@ -9,7 +9,8 @@ The analysis includes:
 6. Biological interpretation of mutational signatures
 
 Spoiler: it's mostly the sun.
-##Why this project was done
+
+## Why this project was done
 Cancer genomes accumulate mutations through multiple biological and environmental processes. Each process leaves a characteristic mutation pattern known as a mutational signature.
 Examples:
 
