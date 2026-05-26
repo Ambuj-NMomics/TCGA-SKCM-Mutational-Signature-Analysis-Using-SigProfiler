@@ -117,93 +117,120 @@ Samples analyzed: 97 melanoma tumors, 18,025 SNVs
 
 ## Tools Used
 
-Tool                              What it does
+Tool                                      What it does
 
-GDC Client                      Downloads TCGA data
+GDC Client                                Downloads TCGA data
 
-SigProfilerMatrixGenerator      Builds the SBS96 mutation matrix
+SigProfilerMatrixGenerator                Builds the SBS96 mutation matrix
 
-SigProfilerAssignment           Fits COSMIC signatures to your data
+SigProfilerAssignment                     Fits COSMIC signatures to your data
 
-scikit-learn                    Cosine similarity between samples
+scikit-learn                              Cosine similarity between samples
 
-matplotlib                      Visualization
+matplotlib                                Visualization
 
 ## Full Workflow
 
-1. Download the GDC Client
+### 1. Download the GDC Client
 
 bash
+
 wget https://gdc.cancer.gov/files/public/file/gdc-client_v1.6.1_Ubuntu_x64.zip
+
 unzip gdc-client_v1.6.1_Ubuntu_x64.zip
+
 chmod +x gdc-client
 
 
-2. Download Mutation Data
+### 2. Download Mutation Data
 
 Grab your manifest from the GDC portal (filter by TCGA-SKCM → Masked Somatic Mutation → MAF), then:
 
 bash
+
 ./gdc-client download -m gdc_manifest.txt
 
 
-3. Organize the MAF Files
+### 3. Organize the MAF Files
 
 bash
+
 mkdir maf_files
+
 find . -name "*.maf.gz" -exec cp {} maf_files/ \;
+
 gunzip maf_files/*.maf.gz
 
 
-4. Set Up the Environment
+### 4. Set Up the Environment
 
 bash
+
 conda create -n mutsig python=3.10 -y
+
 conda activate mutsig
+
 pip install SigProfilerMatrixGenerator SigProfilerAssignment SigProfilerExtractor scikit-learn
 
 
-5. Install the Reference Genome
+### 5. Install the Reference Genome
 
 python
+
 from SigProfilerMatrixGenerator import install as genInstall
+
 genInstall.install('GRCh38')
 
 This step will take time to download Reference genome while you can have Coffee or drink.
 
 
-6. Generate the SBS96 Matrix
+### 6. Generate the SBS96 Matrix
 
 python
+
 from SigProfilerMatrixGenerator.scripts import SigProfilerMatrixGeneratorFunc as matGen
 
 matGen.SigProfilerMatrixGeneratorFunc(
+
     "SKCM",
+    
     "GRCh38",
+    
     "/path/to/maf_files",
+    
     plot=True
 )
 
 Output : This generates SBS96, DBS, and indel matrices. The one we care about most is SKCM.SBS96.all.
 
 
-7. COSMIC Signature Fitting
+### 7. COSMIC Signature Fitting
 
 python
+
 import pandas as pd
+
 from SigProfilerAssignment import Analyzer as Analyze
 
 matrix = pd.read_csv(
+
     "/path/to/output/SBS/SKCM.SBS96.all",
+    
     sep="\t", index_col=0
 )
 
 Analyze.cosmic_fit(
+    
     samples=matrix,
+    
     output="/path/to/SKCMAssignment",
+    
     input_type="matrix",
+    
     context_type="96",
+    
     genome_build="GRCh38",
+    
     cosmic_version=3.4
 )
 
