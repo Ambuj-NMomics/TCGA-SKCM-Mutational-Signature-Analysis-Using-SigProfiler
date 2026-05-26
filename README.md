@@ -237,39 +237,53 @@ Analyze.cosmic_fit(
 Under the hood this uses Non-negative Least Squares (NNLS) — because mutation counts can't go negative. It decomposes your observed profile as a weighted sum of known COSMIC signatures.
 
 
-8. Exposure Heatmap
+### 8. Exposure Heatmap
 
 python
+
 import pandas as pd
+
 import matplotlib.pyplot as plt
 
 df = pd.read_csv(
+
     "/path/to/SKCMAssignment/Assignment_Solution/Activities/Assignment_Solution_Activities.txt",
     sep="\t", index_col=0
 )
 
 plt.figure(figsize=(15, 8))
+
 plt.imshow(df.T, aspect='auto')
+
 plt.colorbar(label="Exposure")
+
 plt.xlabel("Samples")
+
 plt.ylabel("Signatures")
+
 plt.title("Mutational Signature Exposure Heatmap")
+
 plt.tight_layout()
+
 plt.show()
 
 
-9. Cosine Similarity Between Samples
+### 9. Cosine Similarity Between Samples
 
 python
+
 from sklearn.metrics.pairwise import cosine_similarity
+
 import pandas as pd
 
 df = pd.read_csv(
+
     "/path/to/output/SBS/SKCM.SBS96.all",
     sep="\t", index_col=0
 )
 
 sim = cosine_similarity(df.T)
+
 print(sim)
 
 Values above 0.85 mean the samples basically share the same mutational history. Below 0.3 and they're quite different — probably driven by different secondary processes on top of UV.
