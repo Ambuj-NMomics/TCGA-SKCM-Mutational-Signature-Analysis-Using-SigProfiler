@@ -52,9 +52,13 @@ Example:
 A[C>T]G
 
 Meaning:
+
 original base = C
+
 mutated base = T
+
 upstream base = A
+
 downstream base = G
 
 There are:
@@ -83,11 +87,15 @@ T[C>A]A	         45
 ### COSMIC Signature Fitting
 The observed mutation profile is reconstructed using known COSMIC signatures.
 
-Mathematical model: M ≈ Σ(wᵢSᵢ)
+Mathematical model: 
+                   M ≈ Σ(wᵢSᵢ)
 
 Where:
+
 M = observed mutation profile
+
 Sᵢ = known COSMIC signature
+
 wᵢ = exposure weight
 
 Method used: Non-negative Least Squares (NNLS)
