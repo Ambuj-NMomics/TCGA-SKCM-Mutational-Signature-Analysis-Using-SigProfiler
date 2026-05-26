@@ -1,5 +1,5 @@
-#TCGA-SKCM Mutational Signature Analysis
-##So here's what this project is about, I took real melanoma genomic data from TCGA and ran it through a complete mutational signature analysis pipeline. The goal was simple: figure out what biological processes are actually responsible for the mutations piling up in melanoma genomes.
+# TCGA-SKCM Mutational Signature Analysis
+## So here's what this project is about, I took real melanoma genomic data from TCGA and ran it through a complete mutational signature analysis pipeline. The goal was simple: figure out what biological processes are actually responsible for the mutations piling up in melanoma genomes.
 The analysis includes:
 1. Downloading somatic mutation data from TCGA/GDC
 2. Processing MAF mutation files
@@ -9,7 +9,7 @@ The analysis includes:
 6. Biological interpretation of mutational signatures
 
 Spoiler: it's mostly the sun.
-##Why this project was done
+## Why this project was done
 Cancer genomes accumulate mutations through multiple biological and environmental processes. Each process leaves a characteristic mutation pattern known as a mutational signature.
 Examples:
 
@@ -20,7 +20,7 @@ Aging	                                  SBS1
 APOBEC activity	                       SBS2/SBS13
 Homologous recombination deficiency	  SBS3
 
-##Why Melanoma?
+## Why Melanoma?
 Honestly, melanoma just made sense as a starting point. It has this insanely high mutation burden compared to most cancers, and UV damage leaves such a strong, clean signal in the data — like SBS7 just dominates. So when you actually run the analysis, the results are almost intuitive. You can see the biology in the numbers, which doesn't always happen.
 And the TCGA-SKCM dataset being publicly available made it way more practical. I could actually follow through the whole pipeline without hitting walls.
 Melanoma was selected because:
@@ -31,7 +31,7 @@ Melanoma was selected because:
 
 The goal of this project was to computationally identify these mutational processes from real TCGA melanoma data.
 
-##What Even Are Mutational Signatures?
+## What Even Are Mutational Signatures?
 
 So here's the thing — DNA doesn't just randomly break. Different things damage it in very specific ways, and those ways leave patterns. Consistent, reproducible patterns.
 UV radiation? It causes C→T mutations, almost always at dipyrimidine sites. Tobacco smoke leaves C→A transversions. And APOBEC enzymes — which are actually part of your own immune system, which I find kind of wild — mutate cytosines in very particular sequence contexts. Your body's defense mechanism quietly leaving marks on your genome. Weird, right?
@@ -39,7 +39,7 @@ Now here's where it gets interesting. These patterns are consistent enough acros
 The way we actually capture this is through the SBS96 framework. Every single mutation gets categorized by its trinucleotide context — meaning, what base mutated, what it changed to, and what bases were sitting on either side of it. Do the math: 6 substitution types × 16 possible flanking combinations = 96 categories total. It sounds complicated but once you see it visually it clicks immediately. Honestly it's kind of elegant for something built to track cancer mutations.
 So a mutational signature is essentially just a pattern across those 96 categories. And when you see the same pattern showing up repeatedly across different patients? That's a biological process leaving its mark — consistently enough that you can name it, study it, and eventually maybe target it.
 
-##SBS96 Framework:
+## SBS96 Framework:
 Single base substitutions (SBS) are categorized using trinucleotide context.
 
 Example:
@@ -60,9 +60,9 @@ C. 4 downstream possibilities
 Total: 6 × 4 × 4 = 96 contexts
 This is known as the SBS96 framework.
 
-##Computational Theory
+## Computational Theory
 
-###Mutational Matrix
+### Mutational Matrix
 Rows: mutation contexts (96)
 Columns: tumor samples
 Values: mutation counts
@@ -75,7 +75,7 @@ A[C>T]G	         120
 T[C>A]A	         45
 
 
-###COSMIC Signature Fitting
+### COSMIC Signature Fitting
 The observed mutation profile is reconstructed using known COSMIC signatures.
 
 Mathematical model: M ≈ Σ(wᵢSᵢ)
@@ -88,14 +88,14 @@ wᵢ = exposure weight
 Method used: Non-negative Least Squares (NNLS)
 Reason: Mutation counts cannot be negative
 
-##Dataset
+## Dataset
 Source: TCGA GDC Portal
 Project: TCGA-SKCM (Skin Cutaneous Melanoma)
 Data type: Masked Somatic Mutations (MAF format)
 Strategy: Whole Exome Sequencing
 Samples analyzed: 97 melanoma tumors, 18,025 SNVs
 
-##Tools Used
+## Tools Used
 
 Tool                              What it does
 GDC Client                      Downloads TCGA data
@@ -104,7 +104,7 @@ SigProfilerAssignment           Fits COSMIC signatures to your data
 scikit-learn                    Cosine similarity between samples
 matplotlib                      Visualization
 
-##Full Workflow
+## Full Workflow
 
 1. Download the GDC Client
 
