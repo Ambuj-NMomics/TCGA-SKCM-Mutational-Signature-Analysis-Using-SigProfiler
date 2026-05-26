@@ -78,10 +78,11 @@ Values: mutation counts
 
 Example:
 
-Mutation Type	Sample1
+Mutation Type	       Sample1
 
-A[C>T]G	         120
-T[C>A]A	         45
+A[C>T]G	              120
+
+T[C>A]A	              45
 
 
 ### COSMIC Signature Fitting
@@ -99,22 +100,33 @@ Sᵢ = known COSMIC signature
 wᵢ = exposure weight
 
 Method used: Non-negative Least Squares (NNLS)
+
 Reason: Mutation counts cannot be negative
 
 ## Dataset
+
 Source: TCGA GDC Portal
+
 Project: TCGA-SKCM (Skin Cutaneous Melanoma)
+
 Data type: Masked Somatic Mutations (MAF format)
+
 Strategy: Whole Exome Sequencing
+
 Samples analyzed: 97 melanoma tumors, 18,025 SNVs
 
 ## Tools Used
 
 Tool                              What it does
+
 GDC Client                      Downloads TCGA data
+
 SigProfilerMatrixGenerator      Builds the SBS96 mutation matrix
+
 SigProfilerAssignment           Fits COSMIC signatures to your data
+
 scikit-learn                    Cosine similarity between samples
+
 matplotlib                      Visualization
 
 ## Full Workflow
