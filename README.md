@@ -1,9 +1,8 @@
 # TCGA-SKCM Mutational Signature Analysis
-<<<<<<< HEAD
+
 ## So here's what this project is about, I took real melanoma genomic data from TCGA and ran it through a complete mutational signature analysis pipeline. The goal was simple: figure out what biological processes are actually responsible for the mutations piling up in melanoma genomes.
-=======
+
 ### So here's what this project is about, I took real melanoma genomic data from TCGA and ran it through a complete mutational signature analysis pipeline. The goal was simple: figure out what biological processes are actually responsible for the mutations piling up in melanoma genomes.
->>>>>>> 2d924214a371a14b4cb5df1e772a567e70128c53
 The analysis includes:
 1. Downloading somatic mutation data from TCGA/GDC
 2. Processing MAF mutation files
@@ -13,10 +12,7 @@ The analysis includes:
 6. Biological interpretation of mutational signatures
 
 Spoiler: it's mostly the sun.
-<<<<<<< HEAD
-=======
 
->>>>>>> 2d924214a371a14b4cb5df1e772a567e70128c53
 ## Why this project was done
 Cancer genomes accumulate mutations through multiple biological and environmental processes. Each process leaves a characteristic mutation pattern known as a mutational signature.
 Examples:
@@ -111,10 +107,7 @@ Method used: Non-negative Least Squares (NNLS)
 Reason: Mutation counts cannot be negative
 
 ## Dataset
-<<<<<<< HEAD
-=======
 
->>>>>>> 2d924214a371a14b4cb5df1e772a567e70128c53
 Source: TCGA GDC Portal
 
 Project: TCGA-SKCM (Skin Cutaneous Melanoma)
@@ -129,11 +122,10 @@ Samples analyzed: 97 melanoma tumors, 18,025 SNVs
 
 Tool                                      What it does
 
-<<<<<<< HEAD
+
 ## Full Workflow
-=======
+
 GDC Client                                Downloads TCGA data
->>>>>>> 2d924214a371a14b4cb5df1e772a567e70128c53
 
 SigProfilerMatrixGenerator                Builds the SBS96 mutation matrix
 
