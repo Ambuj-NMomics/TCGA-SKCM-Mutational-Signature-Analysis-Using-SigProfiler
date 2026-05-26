@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+*.maf
+*.maf.gz
+*.vcf
+*.vcf.gz
